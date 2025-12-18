@@ -1,4 +1,4 @@
-#include "backsubst"
+#include "backsubst.h"
 #include <stdio.h>
 
 int backsubst(double A[][100], double b[], double x[], int k)
@@ -22,3 +22,4 @@ int backsubst(double A[][100], double b[], double x[], int k)
 
   return 0; /*sukces*/
 }
+
