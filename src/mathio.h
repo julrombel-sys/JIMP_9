@@ -6,7 +6,7 @@
 
 typedef struct Matrix {
 	int row, col;
-	int **mat;
+	double **mat;
 } matrix_t;
 
 matrix_t new_matrix(int, int);

@@ -18,13 +18,19 @@ int main(int argc, char *argv[]) {
 	}
 
 	matrix_t matr = read_matrix(file);
+	fclose(file);
 	if(matr.mat == NULL) {
 		fprintf(stderr, "%s: Nie można utworzyć macierzy!\n", argv[0]);
-		fclose(file);
 		return 1;
 	}
 
-	fclose(file);
+	puts("Podana macierz:");
+	print_matrix(stdout, matr);
+
+	gauss_elim(&matr);
+	puts("Po elimacji Gaussa:");
+	print_matrix(stdout, matr);
+
 	free_matrix(matr);
 	return 0;
 }

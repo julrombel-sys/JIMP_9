@@ -2,11 +2,11 @@
 
 matrix_t new_matrix(int row, int col) {
 	matrix_t matr;
-	matr.mat = malloc(row * sizeof(int*));
+	matr.mat = malloc(row * sizeof(double*));
 	if(matr.mat == NULL)
 		return matr;
 	for(int i = 0; i < row; ++i) {
-		matr.mat = malloc(col * sizeof(int));
+		matr.mat = malloc(col * sizeof(double));
 		if(matr.mat == NULL) {
 			for(int j = 0; j < i; ++j)
 				free(matr.mat[j]);
@@ -26,11 +26,11 @@ matrix_t read_matrix(FILE *file)  {
 
 	if(fscanf(file, "%d%d", &matr.row, &matr.col) != 2)
 		return matr;
-	matr.mat = malloc(matr.row * sizeof(int*));
+	matr.mat = malloc(matr.row * sizeof(double*));
 	if(matr.mat == NULL)
 		return matr;
 	for(int i = 0; i < matr.row; ++i) {
-		matr.mat[i] = malloc(matr.col * sizeof(int));
+		matr.mat[i] = malloc(matr.col * sizeof(double));
 		if(matr.mat[i] == NULL) {
 			for(int j = 0; j < i; ++j)
 				free(matr.mat[j]);
@@ -39,7 +39,7 @@ matrix_t read_matrix(FILE *file)  {
 			return matr;
 		}
 		for(int j = 0; j < matr.col; ++j) {
-			if(fscanf(file, "%d", &matr.mat[i][j]) != 1) {
+			if(fscanf(file, "%lf", &matr.mat[i][j]) != 1) {
 				for(int k = 0; k <= i; ++k)
 					free(matr.mat[k]);
 				free(matr.mat);
@@ -56,7 +56,7 @@ void print_matrix(FILE* file, matrix_t matr) {
 	for(int i = 0; i < matr.row; ++i) {
 		fputc('[', file);
 		for(int j = 0; j < matr.col; ++j)
-			fprintf(file, "\t%d", matr.mat[i][j]);
+			fprintf(file, "\t%.5lg", matr.mat[i][j]);
 		fputc(']', file);
 		fputc('\n', file);
 	}
