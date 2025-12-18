@@ -1,4 +1,4 @@
-CFLAGS = -Wall -Wextra -std=c11 -O2
+CFLAGS = -Wall -Wextra -std=c11
 EXEC = lmp9
 FILES = src/main.c src/mathio.c src/backsubst.c src/gauss.c
 
