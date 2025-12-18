@@ -2,7 +2,6 @@
 #define _MATHIO_H__
 
 #include <stdio.h>
-#include <stdlib.h>
 
 typedef struct Matrix {
 	int row, col;

@@ -1,3 +1,6 @@
+#include "mathio.h"
+#include <stdlib.h>
+
 matrix_t new_matrix(int row, int col) {
 	matrix_t matr;
 	matr.mat = malloc(row * sizeof(double*));
