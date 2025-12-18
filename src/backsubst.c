@@ -15,11 +15,12 @@ int backsubst(double A[][100], double b[], double x[], int k)
     x[i] = b[i];
     for(j = i + 1; j < k; j++)
       {
-      x[i] -= A[i][i] * x[j];
+      x[i] -= A[i][j] * x[j];
       }
     x[i] /= A[i][i];
   }
 
   return 0; /*sukces*/
 }
+
 
