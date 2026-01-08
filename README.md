@@ -1,4 +1,4 @@
 ## Do zrobienia:
 - [x] implementacja
-- [ ] testowanie/debugowanie
-- [ ] więcej macierzy
+- [x] testowanie/debugowanie
+- [x] więcej macierzy
