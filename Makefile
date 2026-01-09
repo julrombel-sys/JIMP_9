@@ -1,5 +1,6 @@
-CFLAGS = -Wall -Wextra -std=c99 -pedantic
+CFLAGS = -O2 -Wall -Wextra -std=c99 -pedantic
 UNAME = $(shell uname -s)
+
 ifeq ($(UNAME),Darwin)
 	VALGRIND := leaks --atExit --
 else
@@ -12,13 +13,11 @@ test: lmp9
 debug: debug_lmp9
 	@for i in $$(ls matr); do echo "$$i:"; $(VALGRIND) ./debug_lmp9 "matr/$$i"; echo "\n"; done
 
-override CFLAGS += -O2
 lmp9: src/main.o src/mathio.o src/gauss.o src/backsubst.o
 	$(CC) $(CFLAGS) -o $@ $^
 
-override CFLAGS += -g -DDEBUG=1
 debug_lmp9: src/main.o src/mathio.o src/gauss.o src/backsubst.o
-	$(CC) $(DEBUG_CFLAGS) -o $@ $^
+	$(CC) $(CFLAGS) -g -o $@ $^
 
 clean:
 	rm -f src/*.o lmp9 debug_lmp9

@@ -19,7 +19,9 @@ int gauss_elim(matrix_t *mat, double *x) {
 	int ax, i, j;
 	for(ax = 0; ax < mat->row; ++ax) {
 		if(mat->mat[ax][ax] == 0) {
-			if(all_equal(mat->mat[ax], mat->col, 0.0)) {
+			if(all_equal(mat->mat[ax], mat->col-1, 0.0)) {
+				if(mat->mat[ax][mat->col-1] != 0)
+					return EXIT_FAILURE;
 				(mat->row)--;
 				free(mat->mat[ax]);
 				mat->mat[ax] = mat->mat[mat->row];
